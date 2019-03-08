@@ -1,52 +1,39 @@
+const journalEntries = [{
+        date: "02/25/2019",
+        concepts: "objects",
+        entry: "blah blah blah",
+        mood: "Happy"
+    },
+    {
+        date: "02/26/2019",
+        concepts: "functions",
+        entry: "blah blah blah",
+        mood: "Sad"
+    },
+    {
+        date: "02/27/2019",
+        concepts: "javascript",
+        entry: "blah blah blah",
+        mood: "Ok"
+    }
+]
+
+const makeJournalEntryComponent = (journalEntry) => {
+    // Create your own HTML structure for a journal entry
+    return `<h2>${journalEntry.concepts}</h2><p>${journalEntry.entry}</p><p>${journalEntry.date}</p>
+    `
+}
 /*
-    Define the keys and value for a JavaScript object that
-    represents a journal entry about what you learned today
+    Purpose: To render all journal entries to the DOM
+    Arguments: entries (array of objects)
 */
-
-// Oops...getting ahead of myself
-// const journalDateInput = document.getElementById("journalDate");
-// const conceptsCoveredInput = document.getElementById("conceptsCovered");
-// const journalEntryInput = document.getElementById("journalEntry");
-// const currentMoodInput = document.getElementById("currentMood");
-// const allJournalEntries = [];
-
-// const objectsJournalEntry = {
-//     date: journalDateInput,
-//     concepts: conceptsCoveredInput,
-//     entry:journalEntryInput,
-//     mood: currentMoodInput
-// }
-
-// console.log(objectsJournalEntry)
-
-const allJournalEntries = [];
-console.log(allJournalEntries)
-
-const objectsJournalEntry = {
-    date: "02/25/2019",
-    concepts: "objects",
-    entry: "blah blah blah",
-    mood: "Happy"
-}
-console.log(objectsJournalEntry)
-
-allJournalEntries.push(objectsJournalEntry)
-console.log(allJournalEntries)
-
-const functionsJournalEntry = {
-    date: "02/26/2019",
-    concepts: "functions",
-    entry: "blah blah blah",
-    mood: "Sad"
+const renderJournalEntries = (entries) => {
+    const entryLogRef = document.querySelector(".entryLog")
+    entryLogRef.innerHTML = ""
+    for (i = 0; i < entries.length; i++) {
+        entryLogRef.innerHTML += makeJournalEntryComponent(entries[i])
+    }
 }
 
-const javascriptJournalEntry = {
-    date: "02/27/2019",
-    concepts: "javascripts",
-    entry: "blah blah blah",
-    mood: "Ok"
-}
-
-allJournalEntries.push(functionsJournalEntry)
-allJournalEntries.push(javascriptJournalEntry)
-console.log(allJournalEntries)
+// // Invoke the render function
+renderJournalEntries(journalEntries)
