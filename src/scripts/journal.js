@@ -1,23 +1,3 @@
-const journalEntries = [{
-        date: "02/25/2019",
-        concepts: "objects",
-        entry: "blah blah blah",
-        mood: "Happy"
-    },
-    {
-        date: "02/26/2019",
-        concepts: "functions",
-        entry: "blah blah blah",
-        mood: "Sad"
-    },
-    {
-        date: "02/27/2019",
-        concepts: "javascript",
-        entry: "blah blah blah",
-        mood: "Ok"
-    }
-]
-
 const makeJournalEntryComponent = (journalEntry) => {
     // Create your own HTML structure for a journal entry
     return `<h2>${journalEntry.concepts}</h2><p>${journalEntry.entry}</p><p>${journalEntry.date}</p>
@@ -36,4 +16,11 @@ const renderJournalEntries = (entries) => {
 }
 
 // // Invoke the render function
-renderJournalEntries(journalEntries)
+
+
+fetch("http://localhost:8088/journalEntries") // Fetch from the API
+    .then(results => results.json())  // Parse as JSON
+    .then(entries => {
+        renderJournalEntries(entries)
+        // What should happen when we finally have the array?
+    })
