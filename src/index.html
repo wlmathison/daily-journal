@@ -11,25 +11,19 @@
 
 <body>
     <h1>Daily Journal</h1>
-    <form action="">
+    <form id="entry-form">
         <fieldset class="journalEntryFieldset">
             <label for="journalDate">Date of Entry</label>
             <input type="date" name="journalDate" id="journalDate" required patter="[0-9]{2}[/][0-9]{2}[/][0-9]{4}">
         </fieldset>
-    </form>
-    <form action="">
         <fieldset class="journalEntryFieldset">
             <label for="conceptsCovered">Concepts Covered</label>
             <input type="text" name="conceptsCovered" id="conceptsCovered" maxlength="20" required pattern="[A-Za-z ()}{}:;]">
         </fieldset>
-    </form>
-    <form action="">
         <fieldset class="journalEntryFieldset">
             <label for="journalEntry">Journal Entry</label>
             <textarea name="journalEntry" id="journalEntry" cols="25" rows="2" required pattern="[A-Za-z (){}:;]"></textarea>
         </fieldset>
-    </form>
-    <form action="">
         <fieldset class="journalEntryFieldset">
             <label for="currentMood">Mood for the day</label>
             <select name="currentMood" id="currentMood" required>
