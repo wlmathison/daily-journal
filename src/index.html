@@ -12,25 +12,25 @@
 <body>
     <h1>Daily Journal</h1>
     <form action="">
-        <fieldset>
+        <fieldset class="journalEntryFieldset">
             <label for="journalDate">Date of Entry</label>
             <input type="date" name="journalDate" id="journalDate" required patter="[0-9]{2}[/][0-9]{2}[/][0-9]{4}">
         </fieldset>
     </form>
     <form action="">
-        <fieldset>
+        <fieldset class="journalEntryFieldset">
             <label for="conceptsCovered">Concepts Covered</label>
             <input type="text" name="conceptsCovered" id="conceptsCovered" maxlength="20" required pattern="[A-Za-z ()}{}:;]">
         </fieldset>
     </form>
     <form action="">
-        <fieldset>
+        <fieldset class="journalEntryFieldset">
             <label for="journalEntry">Journal Entry</label>
             <textarea name="journalEntry" id="journalEntry" cols="25" rows="2" required pattern="[A-Za-z (){}:;]"></textarea>
         </fieldset>
     </form>
     <form action="">
-        <fieldset>
+        <fieldset class="journalEntryFieldset">
             <label for="currentMood">Mood for the day</label>
             <select name="currentMood" id="currentMood" required>
                 <option value="Happy">Happy</option>
@@ -40,9 +40,11 @@
         </fieldset>
     </form>
     <button type="submit" id="record-journal-entry">Record Journal Entry</button>
+    <div id="radio-filter-container"></div>
     <article class="entryLog"></article>
 
     <script src="./scripts/data.js"></script>
+    <script src="./scripts/domManager.js"></script>
     <script src="./scripts/entryComponent.js"></script>
     <script src="./scripts/entriesDOM.js"></script>
     <script src="./scripts/journal.js"></script>
