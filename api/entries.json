@@ -26,6 +26,13 @@
       "entry": "something",
       "mood": "Ok",
       "id": 6
+    },
+    {
+      "date": "2019-03-27",
+      "concepts": "Browserify",
+      "entry": "Learned the basics of Browserify. Need to create my own alias to do this.",
+      "mood": "Happy",
+      "id": 7
     }
   ]
 }

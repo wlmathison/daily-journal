@@ -7,7 +7,7 @@ const getEntriesThenRender = () => API.getJournalEntries().then(renderToDOM.rend
 const saveJournalEntry = () => {
     let newJournalEntry = createNewJournalEntry();
     if (newJournalEntry !== false) {
-        API.postJournalEntries(newJournalEntry).then(getEntriesThenRender);
+        API.postJournalEntries(newJournalEntry).then(getEntriesThenRender).then(document.getElementById("entry-form").reset());
     }
 }
 getEntriesThenRender();
@@ -37,3 +37,15 @@ const createNewJournalEntry = () => {
 // creating journal entry save button
 const recordJournalEntryButton = document.getElementById("record-journal-entry");
 recordJournalEntryButton.addEventListener("click", saveJournalEntry);
+
+// Adding event listener to each radio button, filtering results to match button value, and rendering matching entries to the DOM
+const radioButtons = document.getElementsByName("moods");
+radioButtons.forEach(radioButton => {
+    radioButton.addEventListener("click", event => {
+        const targetMood = event.target.value;
+        API.getJournalEntries().then(allEntries => {
+            let matchingEntries = allEntries.filter(entry => entry.mood === targetMood)
+            renderToDOM.renderJournalEntries(matchingEntries);
+        })
+    })
+});
