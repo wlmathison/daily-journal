@@ -18,11 +18,13 @@
         </fieldset>
         <fieldset class="journalEntryFieldset">
             <label for="conceptsCovered">Concepts Covered</label>
-            <input type="text" name="conceptsCovered" id="conceptsCovered" maxlength="20" required pattern="[A-Za-z ()}{}:;]">
+            <input type="text" name="conceptsCovered" id="conceptsCovered" maxlength="20" required
+                pattern="[A-Za-z ()}{}:;]">
         </fieldset>
         <fieldset class="journalEntryFieldset">
             <label for="journalEntry">Journal Entry</label>
-            <textarea name="journalEntry" id="journalEntry" cols="25" rows="2" required pattern="[A-Za-z (){}:;]"></textarea>
+            <textarea name="journalEntry" id="journalEntry" cols="25" rows="2" required
+                pattern="[A-Za-z (){}:;]"></textarea>
         </fieldset>
         <fieldset class="journalEntryFieldset">
             <label for="currentMood">Mood for the day</label>
@@ -32,6 +34,7 @@
                 <option value="Sad">Sad</option>
             </select>
         </fieldset>
+        <input id="journalID" type="hidden">
     </form>
     <button type="submit" id="record-journal-entry">Record Journal Entry</button>
     <div id="radio-filter-container"></div>

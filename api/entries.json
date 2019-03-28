@@ -1,17 +1,10 @@
 {
   "journalEntries": [
     {
-      "date": "02/25/2019",
-      "concepts": "objects",
-      "entry": "blah blah blah",
+      "date": "2019-02-28",
+      "concepts": "teamwork",
+      "entry": "alumni talk regarding teamwork and communication.",
       "mood": "Happy",
-      "id": 1
-    },
-    {
-      "date": "02/26/2019",
-      "concepts": "functions",
-      "entry": "blah blah blah",
-      "mood": "Sad",
       "id": 2
     },
     {
@@ -34,6 +27,13 @@
       "entry": "Learned the basics of Browserify. Need to create my own alias to do this.",
       "mood": "Happy",
       "id": 7
+    },
+    {
+      "date": "2019-02-25",
+      "concepts": "objects",
+      "entry": "blah blah blah",
+      "mood": "Happy",
+      "id": 10
     }
   ]
 }
