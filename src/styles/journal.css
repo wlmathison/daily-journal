@@ -7,3 +7,12 @@ button {
     border-radius: 3px;
     margin-right: 10px;
 }
+
+#search-form-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+#search-form-container form {
+    width: 40%;
+}

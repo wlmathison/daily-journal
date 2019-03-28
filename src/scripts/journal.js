@@ -52,6 +52,7 @@ const createNewJournalEntry = () => {
         }
 };
 
+// Function to place entry to be edited into form
 const journalEntryEditForm = (entryToEdit) => {
     let entryDate = document.querySelector("#journalDate");
     let entryConcept = document.querySelector("#conceptsCovered");

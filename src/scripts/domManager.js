@@ -1,39 +1,39 @@
-const radioFilterContainer = document.getElementById("radio-filter-container");
+// Function to create a radio button for mood
+const createRadioButton = (mood) => {
+    let button = document.createElement("input");
+    button.type = "radio";
+    button.name = "moods";
+    button.value = `${mood}`;
+    radioFrag.appendChild(button)
+    let label = document.createElement("label");
+    label.textContent = `${mood}`;
+    radioFrag.appendChild(label);
+}
+
+const divContainer = document.getElementById("search-form-container");
 
 const moodSearchForm = document.createElement("form");
 const moodSearchFieldset = document.createElement("fieldset");
 let moodSearchLegend = document.createElement("legend");
-let legendText = document.createTextNode("Filter Journal Entries by Mood");
-moodSearchLegend.appendChild(legendText);
+let moodLegendText = document.createTextNode("Filter Journal Entries by Mood");
+moodSearchLegend.appendChild(moodLegendText);
 moodSearchFieldset.appendChild(moodSearchLegend);
-
-let radioFrag = document.createDocumentFragment();
-
-let sadRadioButton = document.createElement("input");
-sadRadioButton.type = "radio";
-sadRadioButton.name = "moods";
-sadRadioButton.value = "Sad";
-radioFrag.appendChild(sadRadioButton)
-let sadRadioLabel = document.createElement("label");
-sadRadioLabel.textContent = "Sad";
-radioFrag.appendChild(sadRadioLabel);
-let happyRadioButton = document.createElement("input");
-happyRadioButton.type = "radio";
-happyRadioButton.name = "moods";
-happyRadioButton.value = "Happy";
-radioFrag.appendChild(happyRadioButton);
-let happyRadioLabel = document.createElement("label");
-happyRadioLabel.textContent = "Happy";
-radioFrag.appendChild(happyRadioLabel);
-let okRadioButton = document.createElement("input");
-okRadioButton.type = "radio";
-okRadioButton.name = "moods";
-okRadioButton.value = "Ok";
-radioFrag.appendChild(okRadioButton);
-let okRadioLabel = document.createElement("label");
-okRadioLabel.textContent = "Ok";
-radioFrag.appendChild(okRadioLabel);
-
+const radioFrag = document.createDocumentFragment();
+createRadioButton("Sad");
+createRadioButton("Happy");
+createRadioButton("Ok");
 moodSearchFieldset.appendChild(radioFrag);
 moodSearchForm.appendChild(moodSearchFieldset);
-radioFilterContainer.appendChild(moodSearchForm);
+divContainer.appendChild(moodSearchForm);
+
+const searchInputForm = document.createElement("form");
+const searchInputFieldset = document.createElement("fieldset");
+let searchInputLegend = document.createElement("legend");
+let searchLegendText = document.createTextNode("Search Journal Entries");
+searchInputLegend.appendChild(searchLegendText);
+searchInputFieldset.appendChild(searchInputLegend);
+let searchInput = document.createElement("input");
+searchInput.placeholder = "Enter search term";
+searchInputFieldset.appendChild(searchInput);
+searchInputForm.appendChild(searchInputFieldset);
+divContainer.appendChild(searchInputForm);
