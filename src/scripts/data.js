@@ -14,6 +14,12 @@ const API = {
             },
             body: JSON.stringify(newEntry)
         })
+    },
+    // DELETE method to delete entry from API
+    deleteJournalEntry(entry) {
+        return fetch(`http://localhost:8088/journalEntries/${entry}`, {
+            method: "DELETE"
+        })
     }
 }
 
