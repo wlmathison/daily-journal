@@ -14,17 +14,16 @@
     <form id="entry-form">
         <fieldset class="journalEntryFieldset">
             <label for="journalDate">Date of Entry</label>
-            <input type="date" name="journalDate" id="journalDate" required patter="[0-9]{2}[/][0-9]{2}[/][0-9]{4}">
+            <input type="date" name="journalDate" id="journalDate" required>
         </fieldset>
         <fieldset class="journalEntryFieldset">
             <label for="conceptsCovered">Concepts Covered</label>
             <input type="text" name="conceptsCovered" id="conceptsCovered" maxlength="20" required
-                pattern="[A-Za-z ()}{}:;]">
+                pattern="[A-Za-z0-9':;]+">
         </fieldset>
         <fieldset class="journalEntryFieldset">
             <label for="journalEntry">Journal Entry</label>
-            <textarea name="journalEntry" id="journalEntry" cols="25" rows="2" required
-                pattern="[A-Za-z (){}:;]"></textarea>
+            <textarea name="journalEntry" id="journalEntry" cols="25" rows="2" required></textarea>
         </fieldset>
         <fieldset class="journalEntryFieldset">
             <label for="currentMood">Mood for the day</label>
@@ -35,9 +34,9 @@
             </select>
         </fieldset>
         <input id="journalID" type="hidden">
+        <button type="submit" id="record-journal-entry">Record Journal Entry</button>
     </form>
-    <button type="submit" id="record-journal-entry">Record Journal Entry</button>
-    <div id="radio-filter-container"></div>
+    <div id="search-form-container"></div>
     <article class="entryLog"></article>
 
     <script src="./scripts/data.js"></script>

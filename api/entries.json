@@ -34,6 +34,13 @@
       "entry": "blah blah blah",
       "mood": "Happy",
       "id": 10
+    },
+    {
+      "date": "2019-03-29",
+      "concepts": "ERD",
+      "entry": "Learned about entity relationship diagrams. Also learned how to create issues and cards in gitHub.",
+      "mood": "Happy",
+      "id": 11
     }
   ]
 }
