@@ -24,32 +24,41 @@ getEntriesThenRender();
 const createNewJournalEntry = () => {
     let badWord = /shit|damn|fuck|ass|hell/i;
     let entryDate = document.querySelector("#journalDate").value;
-    let entryConcept = document.querySelector("#conceptsCovered").value;
-    let entryEntry = document.querySelector("#journalEntry").value;
+    let entryConcept = document.querySelector("#conceptsCovered");
+    let entryEntry = document.querySelector("#journalEntry");
     let entryMood = document.querySelector("#currentMood").value;
     let entryID = document.querySelector("#journalID").value;
 
-    if (badWord.test(entryConcept)) {
-        alert("Your input contains a curse word. Please change your concept name.")
+    if (!entryConcept.checkValidity()) {
         return false;
-    } else if (badWord.test(entryEntry)) {
-        alert("Your input contains a curse word. Please chage your entry.")
+    } else if (badWord.test(entryConcept.value)) {
+        alert("Your input contains a curse word. Please change your concept name.")
+        event.preventDefault();
+        return false;
+    } else if (!entryEntry.checkValidity()) {
+        return false;
+    } else if (badWord.test(entryEntry.value)) {
+        alert("Your input contains a curse word. Please change your entry.")
+        event.preventDefault();
+        return false;
+    } else if (entryDate === "") {
         return false;
     } else if (entryID === 0) {
         return {
             "date": entryDate,
-            "concepts": entryConcept,
-            "entry": entryEntry,
+            "concepts": entryConcept.value,
+            "entry": entryEntry.value,
             "mood": entryMood
         }
-    } else
+    } else {
         return {
             "date": entryDate,
-            "concepts": entryConcept,
-            "entry": entryEntry,
+            "concepts": entryConcept.value,
+            "entry": entryEntry.value,
             "mood": entryMood,
             "id": entryID
         }
+    }
 };
 
 // Function to place entry to be edited into form
@@ -77,10 +86,40 @@ recordJournalEntryButton.addEventListener("click", saveJournalEntry);
 const radioButtons = document.getElementsByName("moods");
 radioButtons.forEach(radioButton => {
     radioButton.addEventListener("click", event => {
-        const targetMood = event.target.value;
+        let targetMood = event.target.value;
         API.getJournalEntries().then(allEntries => {
-            let matchingEntries = allEntries.filter(entry => entry.mood === targetMood)
-            renderToDOM.renderJournalEntries(matchingEntries);
+            if (targetMood === "Show All") {
+                renderToDOM.renderJournalEntries(allEntries)
+            } else {
+                let matchingEntries = allEntries.filter(entry => entry.mood === targetMood)
+                renderToDOM.renderJournalEntries(matchingEntries);
+            }
+
         })
     })
-})
+});
+
+// Function to search through all entries for input text
+const handleSearch = () => {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        let inputText = event.target.value.toString().toLowerCase();
+        API.getJournalEntries().then(allEntries => {
+            let matchingEntries = [];
+            allEntries.forEach(entry => {
+                for (const value of Object.values(entry)) {
+                    if (value.toString().toLowerCase().includes(inputText)) {
+                        matchingEntries.push(entry);
+                        break;
+                    }
+                }
+            })
+            renderToDOM.renderJournalEntries(matchingEntries);
+            searchFormInput.value = "";
+        })
+    }
+};
+
+// Creating event listener for search journal entries form
+const searchFormInput = document.getElementById("search-input");
+searchFormInput.addEventListener("keypress", handleSearch);

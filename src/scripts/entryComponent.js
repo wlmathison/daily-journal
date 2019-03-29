@@ -51,4 +51,4 @@ const buildingJournal = Object.create(null, {
             return entrySection
         }
     }
-})
+});
